@@ -12,6 +12,16 @@ import app from "./app";
 // Get the port from the environment variables
 const port = process.env.APP_PORT;
 
+// Declaration of a "Welcome" route
+
+import type { RequestHandler } from "express";
+
+const sayWelcome: RequestHandler = (req, res) => {
+  res.send("Welcome to Wild Series !");
+};
+
+app.get("/", sayWelcome);
+
 // Start the server and listen on the specified port
 app
   .listen(port, () => {
@@ -20,7 +30,3 @@ app
   .on("error", (err: Error) => {
     console.error("Error:", err.message);
   });
-
-app.get("/", (req, res) => {
-  res.send("Welcome to Wild Series !");
-});
