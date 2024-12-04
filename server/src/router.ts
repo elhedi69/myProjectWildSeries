@@ -24,11 +24,18 @@ router.get("/", sayActions.sayWelcome);
 /* ************************************************************************* */
 
 // Declaration of a "Program" route
-
-import browse from "./modules/program/programActions";
 import programActions from "./modules/program/programActions";
 
 router.get("/api/programs", programActions.browse);
+router.get("/api/programs/:id", programActions.read);
+
+/* ************************************************************************* */
+
+// Declaration of a "Category" route
+import categoryActions from "./modules/category/categoryActions";
+
+router.get("/api/categories", categoryActions.browse);
+router.get("/api/categories/:id", categoryActions.read);
 
 /* ************************************************************************* */
 

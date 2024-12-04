@@ -1,0 +1,10 @@
+.serie {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+#image {
+  width: 30vw;
+  height: 50vw;
+}

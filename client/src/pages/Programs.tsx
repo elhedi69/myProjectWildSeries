@@ -22,8 +22,8 @@ function Programs() {
   return (
     <>
       {programs.map((serie) => (
-        <div key={serie.id}>
-          <img src={serie.poster} alt={serie.title} />
+        <div className="serie" key={serie.id}>
+          <img id="image" src={serie.poster} alt={serie.title} />
           <p>{serie.title}</p>
         </div>
       ))}
