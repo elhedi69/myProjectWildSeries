@@ -1,32 +1,37 @@
 import "./Programs.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-interface programsProps {
+type Program = {
   id: number;
   poster: string;
   title: string;
-}
+};
 
 function Programs() {
-  const [programs, setPrograms] = useState<programsProps[]>([]);
+  const [programs, setPrograms] = useState([] as Program[]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/programs")
+    fetch(`${import.meta.env.VITE_API_URL}/api/programs`)
+
       .then((response) => response.json())
-      .then((data) => setPrograms(data))
-      .catch((error) => {
-        console.error(error);
+
+      .then((data: Program[]) => {
+        setPrograms(data);
       });
   }, []);
 
   return (
     <>
-      {programs.map((serie) => (
-        <div className="serie" key={serie.id}>
-          <img id="image" src={serie.poster} alt={serie.title} />
-          <p>{serie.title}</p>
-        </div>
-      ))}
+      <Link to={"/programs/new"}>Ajouter</Link>
+      <ul>
+        {programs.map((program) => (
+          <li key={program.id}>
+            <img id="image" src={program.poster} alt="" />
+            <Link to={`/programs/${program.id}`}>{program.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

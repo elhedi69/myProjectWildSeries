@@ -7,6 +7,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import CategoryDetail from "./pages/CategoryDetail";
+import CategoryEdit from "./pages/CategoryEdit";
+import CategoryIndex from "./pages/CategoryIndex";
+import CategoryNew from "./pages/CategoryNew";
+import ProgramDetail from "./pages/ProgramDetail";
+import ProgramEdit from "./pages/ProgramEdit";
+import ProgramNew from "./pages/ProgramNew";
 import Programs from "./pages/Programs";
 
 // Import additional components for new routes
@@ -23,12 +30,41 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+    children: [
+      {
+        path: "/categories",
+        element: <CategoryIndex />,
+      },
+      {
+        path: "/categories/new",
+        element: <CategoryNew />,
+      },
+      {
+        path: "/categories/:id",
+        element: <CategoryDetail />,
+      },
+      {
+        path: "/categories/:id/edit",
+        element: <CategoryEdit />,
+      },
+      {
+        path: "/programs",
+        element: <Programs />,
+      },
+      {
+        path: "/programs/new",
+        element: <ProgramNew />,
+      },
+      {
+        path: "/programs/:id",
+        element: <ProgramDetail />,
+      },
+      {
+        path: "/programs/:id/edit",
+        element: <ProgramEdit />,
+      },
+    ],
   },
-  {
-    path: "/programs", // The root path
-    element: <Programs />, // Renders the App component for the home page
-  },
-  // Try adding a new route! For example, "/about" with an About component
 ]);
 
 /* ************************************************************************* */
